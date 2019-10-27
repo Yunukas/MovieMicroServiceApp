@@ -1,10 +1,12 @@
 package com.yy.app.controller;
 
 import com.sun.javadoc.ParameterizedType;
+import com.yy.app.config.AppConfig;
 import com.yy.app.entity.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,10 +22,13 @@ public class AppController {
 
     final static Logger logger = LoggerFactory.getLogger(AppController.class);
 
-    private final String USER_URI = "http://localhost:8081/user/";
-    private final String RATING_POST_URI = "http://localhost:8082/rating/";
-    private final String RATING_USER_URI = "http://localhost:8082/rating/user/";
-    private final String MOVIE_URI = "http://localhost:8083/movie/";
+    @Autowired
+    AppConfig appConfig;
+
+    private final String USER_URI = appConfig.getUserUri();
+    private final String RATING_POST_URI = appConfig.getRatingPostUri();
+    private final String RATING_USER_URI = appConfig.getRatingUserUri();
+    private final String MOVIE_URI = appConfig.getMovieUri();
 
     @Autowired
     private RestTemplate restTemplate;
