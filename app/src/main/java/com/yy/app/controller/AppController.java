@@ -58,7 +58,6 @@ public class AppController {
     @GetMapping("/getUserRatings/{userId}")
     public UserRating getRatings(@PathVariable("userId") Long userId){
 
-
         UserRatings userRatings = restTemplate.getForObject(
                  RATING_USER_URI + userId
                 , UserRatings.class );
