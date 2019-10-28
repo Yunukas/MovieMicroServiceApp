@@ -28,10 +28,10 @@ public class AppController {
 
     @PostConstruct
     public void init(){
-        USER_URI = appConfig.getUserUri();
-        RATING_POST_URI = appConfig.getRatingPostUri();
-        RATING_USER_URI = appConfig.getRatingUserUri();
-        MOVIE_URI = appConfig.getMovieUri();
+        USER_URI = "http://userservice/user/";
+        RATING_POST_URI = "http://ratingservice/rating/";
+        RATING_USER_URI = "http://ratingservice/rating/user/";
+        MOVIE_URI = "http://movieservice/movie/";
     }
 
     @Autowired
@@ -54,6 +54,7 @@ public class AppController {
         HttpEntity<Rating> ratingHttpEntity = new HttpEntity<>(rating);
         restTemplate.postForObject(RATING_POST_URI, ratingHttpEntity, Rating.class);
     }
+
 
     @GetMapping("/getUserRatings/{userId}")
     public UserRating getRatings(@PathVariable("userId") Long userId){

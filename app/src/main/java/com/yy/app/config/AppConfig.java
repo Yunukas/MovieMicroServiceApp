@@ -38,11 +38,8 @@ public class AppConfig {
         this.movieUri = movieUri;
     }
 
-    public AppConfig() {
-    }
-
-    @Bean
     @LoadBalanced
+    @Bean
     public RestTemplate getRestTemplate(){
         return new RestTemplate();
     }
