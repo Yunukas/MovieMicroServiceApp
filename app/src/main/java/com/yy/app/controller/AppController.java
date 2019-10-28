@@ -1,20 +1,16 @@
 package com.yy.app.controller;
 
-import com.sun.javadoc.ParameterizedType;
 import com.yy.app.config.AppConfig;
 import com.yy.app.entity.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
+import javax.annotation.PostConstruct;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -25,10 +21,18 @@ public class AppController {
     @Autowired
     AppConfig appConfig;
 
-    private final String USER_URI = appConfig.getUserUri();
-    private final String RATING_POST_URI = appConfig.getRatingPostUri();
-    private final String RATING_USER_URI = appConfig.getRatingUserUri();
-    private final String MOVIE_URI = appConfig.getMovieUri();
+    private String USER_URI;
+    private String RATING_POST_URI;
+    private String RATING_USER_URI;
+    private String MOVIE_URI;
+
+    @PostConstruct
+    public void init(){
+        USER_URI = appConfig.getUserUri();
+        RATING_POST_URI = appConfig.getRatingPostUri();
+        RATING_USER_URI = appConfig.getRatingUserUri();
+        MOVIE_URI = appConfig.getMovieUri();
+    }
 
     @Autowired
     private RestTemplate restTemplate;

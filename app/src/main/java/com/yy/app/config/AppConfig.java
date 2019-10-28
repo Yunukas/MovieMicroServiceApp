@@ -1,22 +1,49 @@
 package com.yy.app.config;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
-@Configuration
+@Component
 public class AppConfig {
 
-    @Value("${USER_URI}")
-    private String userUri;
+    @Value("${user.uri}")
+    private String userUri ="";
 
-    @Value("${RATING_POST_URI}")
-    private String ratingPostUri;
+    @Value("${rating.post.uri}")
+    private String ratingPostUri="";
 
-    @Value("${RATING_USER_URI}")
-    private String ratingUserUri;
+    @Value("${rating.user.uri}")
+    private String ratingUserUri="";
 
-    @Value("${MOVIE_URI}")
-    private String movieUri;
+    @Value("${movie.uri}")
+    private String movieUri="";
+
+    public void setUserUri(String userUri) {
+        this.userUri = userUri;
+    }
+
+    public void setRatingPostUri(String ratingPostUri) {
+        this.ratingPostUri = ratingPostUri;
+    }
+
+    public void setRatingUserUri(String ratingUserUri) {
+        this.ratingUserUri = ratingUserUri;
+    }
+
+    public void setMovieUri(String movieUri) {
+        this.movieUri = movieUri;
+    }
+
+    public AppConfig() {
+    }
+
+    @Bean
+    public RestTemplate getRestTemplate(){
+        return new RestTemplate();
+    }
 
     public String getUserUri() {
         return userUri;
@@ -33,9 +60,4 @@ public class AppConfig {
     public String getMovieUri() {
         return movieUri;
     }
-
-
-    //    RATING_POST_URI: "http://localhost:8082/rating/";
-//    RATING_USER_URI: "http://localhost:8082/rating/user/";
-//    MOVIE_URI:
 }
