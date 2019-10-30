@@ -1,15 +1,2 @@
 server:
   port: 8081
-#spring.jpa.hibernate.ddl-auto=update
-##logging.level.org.hibernate.type=TRACE
-#spring.h2.console.enabled=true
-#spring.h2.console.path=/h2-console
-#spring.datasource.url=jdbc:h2:mem:testdb;IFEXISTS=FALSE;DB_CLOSE_DELAY=-1;
-eureka:
-  instance:
-    preferIpAddress: true
-  client:
-    registerWithEureka: true
-    fetch-registry: true
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/

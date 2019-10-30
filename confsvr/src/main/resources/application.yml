@@ -8,4 +8,4 @@ spring:
       server:
         git:
           uri: https://github.com/Yunukas/config-repo
-          searchPaths: userservice, ratingservice, movieservice, appservice
+          searchPaths: userservice, ratingservice, movieservice, appservice, zuulservice, eurekaservice
