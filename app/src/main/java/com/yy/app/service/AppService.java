@@ -6,7 +6,6 @@ import com.yy.app.entity.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,28 +19,9 @@ public class AppService {
 
     final static Logger logger = LoggerFactory.getLogger(AppService.class);
 
-    private String USER_URI = "http://userservice/user/";
-    private String RATING_POST_URI = "http://ratingservice/rating/";
-    private String RATING_USER_URI = "http://ratingservice/rating/user/";
-    private String MOVIE_URI = "http://movieservice/movie/";
-
-    @HystrixCommand
-    public void addMovie(Movie movie){
-        HttpEntity<Movie> movieHttpEntity = new HttpEntity<>(movie);
-        restTemplate.postForObject(MOVIE_URI, movieHttpEntity, Movie.class);
-    }
-
-    @HystrixCommand
-    public void addUser(User user){
-        HttpEntity<User> userHttpEntity = new HttpEntity<>(user);
-        restTemplate.postForObject(USER_URI, userHttpEntity, User.class);
-    }
-
-    @HystrixCommand
-    public void addRating(Rating rating){
-        HttpEntity<Rating> ratingHttpEntity = new HttpEntity<>(rating);
-        restTemplate.postForObject(RATING_POST_URI, ratingHttpEntity, Rating.class);
-    }
+    private final String USER_URI = "http://userservice/";
+    private final String RATING_USER_URI = "http://ratingservice/user/";
+    private final String MOVIE_URI = "http://movieservice/";
 
     @HystrixCommand(fallbackMethod = "ratingFallBack",
             threadPoolKey = "userRatingsThreadPool",

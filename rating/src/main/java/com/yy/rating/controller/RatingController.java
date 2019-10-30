@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/rating")
+@RequestMapping("/")
 public class RatingController {
 
     @Autowired

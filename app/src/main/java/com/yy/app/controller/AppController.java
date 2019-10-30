@@ -9,26 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/")
 public class AppController {
 
     @Autowired
     private AppService appService;
-
-    @PostMapping("/movie")
-    public void addMovie(@RequestBody Movie movie){
-        appService.addMovie(movie);
-    }
-
-    @PostMapping("/user")
-    public void addUser(@RequestBody User user){
-        appService.addUser(user);
-    }
-
-    @PostMapping("/rating")
-    public void addRating(@RequestBody Rating rating){
-        appService.addRating(rating);
-    }
 
     @GetMapping("/getUserRatings/{userId}")
     public UserRating getRatings(@PathVariable("userId") Long userId){
