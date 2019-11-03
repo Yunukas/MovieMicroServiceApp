@@ -11,5 +11,5 @@ This is a cloud microservice architectured web application. Spring cloud and net
 - [x] Central config repo is supplied with Spring cloud config.
 - [ ] More features coming soon.
 
-![UML Diagram](http://yuml.me/2ce16443.png)
+![UML Diagram](https://github.com/Yunukas/MovieMicroServiceApp/blob/master/uml.png)
 
